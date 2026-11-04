@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mangost"
+version = "0.1.0"
+description = "MANGOST: multi-section spatial domains with spatially adaptive gene network mixtures"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+dependencies = [
+  "numpy>=1.23",
+  "scipy>=1.9",
+  "pandas>=1.5",
+  "scikit-learn>=1.1",
+  "matplotlib>=3.6",
+  "anndata>=0.9",
+  "scanpy>=1.9",
+  "torch>=2.0",
+  "torch_geometric>=2.3",
+]
+
+[project.optional-dependencies]
+tutorial = ["jupyter", "networkx"]
+
+[tool.setuptools.packages.find]
+include = ["mangost*"]
