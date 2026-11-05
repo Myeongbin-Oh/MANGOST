@@ -2,9 +2,9 @@
 
 # 🥭 MANGOST
 
-### **M**ulti-section **A**daptive **N**etwork mixtures of **G**ene associations for **S**patial **T**ranscriptomics
+### **M**ixture of **A**daptive **N**etworks for **G**ene-association **M**odeling in **S**patial **T**ranscriptomics
 
-*Spatial domains and the region-specific gene networks behind them, learned jointly from many tissue sections.*
+*Spatially adaptive mixtures of shared gene association networks for multi-section spatial transcriptomics*
 
 [![Python](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.x-ee4c2c.svg)](https://pytorch.org/)
@@ -17,13 +17,22 @@
 
 ## 🥭 What is MANGOST?
 
-Spatial-domain methods usually stop at the domain map. MANGOST also asks **which gene relationships make each region
-different**. It learns, from expression alone and without annotations,
+Spatial representation learning identifies tissue domains, but leaves open **how genes relate to one another within
+and across those domains**. MANGOST is a spatially adaptive mixture-of-networks framework that learns spatial
+representations and gene association networks jointly across multiple tissue sections, from expression alone and
+without annotations:
 
-1. a **spatial embedding** `s'` of every spot, clustered into **spatial domains**, and
-2. a small set of **gene association networks** `W_1 ... W_K` shared by all sections, together with a **routing weight**
-   `alpha` that says which network each spot uses. Networks used by a region describe the gene–gene relationships of
-   that region.
+1. a **spatial embedding** `s'` of every spot, clustered into **spatial domains**;
+2. a collection of **gene association networks** `W_1 ... W_K` shared across all sections, capturing recurring gene
+   relationships;
+3. a **spatially informed routing weight** `alpha` that assigns each spot its own mixture of networks, so the shared
+   networks can be used differently across tissue locations and similarly by neighbouring spots.
+
+The encoder, networks and router are optimised together through expression reconstruction and masked gene
+prediction, so gene association modelling also contributes to the spatial representation. Across four spatial
+transcriptomics datasets (10x Visium DLPFC, Spatial Transcriptomics mouse brain, MERFISH and STARmap PLUS), MANGOST
+gives competitive spatial domains, and its networks show spatially distinct usage associated with tissue
+organisation.
 
 <p align="center">
   <img src="assets/overview.png" width="100%" alt="MANGOST overview">
@@ -137,7 +146,7 @@ expression pruning, and optional input smoothing over `hops` steps of the graph.
 | DLPFC | 10x Visium | 4,000 HVG | 1.5 | `cut=0.75`* | 0 |
 | Ortiz ST | Spatial Transcriptomics | 4,000 HVG | 1.5 | `cut_quantile=0.4` | 0 |
 | MERFISH | MERFISH (preoptic) | 155 (panel) | 3.0 | none | 6 |
-| STARmap PLUS | STARmap PLUS, 48.5 µm bins | 1,022 (panel) | 1.5 | none | 0 |
+| STARmap PLUS | STARmap PLUS, 48.5 µm bins | 1,022 (panel) | 1.5 | `cut_quantile=0.4` | 0 |
 
 Model and training (defaults of `mg.MANGOST`): `K=10`, gene-embedding rank 64, encoder width 512, transformer
 width 128, 30-dim embedding, 20% masking, likelihood-mixture temperature 0.1, gate weight 0.1, minimum usage 1/(4K),
@@ -184,7 +193,10 @@ MANGOST/
 
 ## 📖 Citation
 
-If you use MANGOST, please cite our paper (in preparation; the reference will be added here).
+If you use MANGOST, please cite:
+
+> Myeongbin Oh and Minsik Oh. **MANGOST: Spatially Adaptive Mixtures of Shared Gene Association Networks for
+> Multi-Section Spatial Transcriptomics.** (manuscript in submission; the full reference will be added here)
 
 ## 📝 License
 

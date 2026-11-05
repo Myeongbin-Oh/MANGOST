@@ -1,4 +1,4 @@
-"""🥭 MANGOST: multi-section spatial domains with spatially adaptive gene network mixtures."""
+"""🥭 MANGOST: spatially adaptive mixtures of shared gene association networks for multi-section spatial transcriptomics."""
 from . import datasets, graph, plotting as pl, tools as tl
 from .trainer import MANGOST
 

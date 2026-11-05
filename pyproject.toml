@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "mangost"
 version = "0.1.0"
-description = "MANGOST: multi-section spatial domains with spatially adaptive gene network mixtures"
+description = "MANGOST: spatially adaptive mixtures of shared gene association networks for multi-section spatial transcriptomics"
 readme = "README.md"
 requires-python = ">=3.9"
 license = { text = "MIT" }
