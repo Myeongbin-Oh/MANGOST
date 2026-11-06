@@ -8,7 +8,7 @@
 
 [![Python](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.x-ee4c2c.svg)](https://pytorch.org/)
-[![License: PolyForm Noncommercial](https://img.shields.io/badge/license-PolyForm%20Noncommercial%201.0.0-yellow.svg)](LICENSE)
+[![License: MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](LICENSE)
 [![Tutorial](https://img.shields.io/badge/tutorial-notebook-orange.svg)](tutorials/MANGOST_tutorial.ipynb)
 
 </div>
@@ -200,8 +200,7 @@ If you use MANGOST, please cite:
 
 ## 📝 License
 
-MANGOST is released under the [PolyForm Noncommercial License 1.0.0](LICENSE): free for academic research and other
-non-commercial use. Commercial use requires a separate license; please contact the author.
+MANGOST is released under the [MIT License](LICENSE).
 
 Copyright (c) 2026 Myeongbin Oh.
 
